@@ -1,19 +1,4 @@
-"use strict";
-// const formEl: HTMLFormElement = document.getElementById("signup") as HTMLFormElement;
-// const FirstNameEl: HTMLInputElement = document.getElementById("firstName") as HTMLInputElement;
-// const ageEl: HTMLInputElement = document.getElementById("age") as HTMLInputElement;
-exports.__esModule = true;
-// const getGift = (age: number) => {
-//    return +age + 3
-// }
-// formEl.addEventListener("submit", (e) => {
-//     e.preventDefault()
-//     if(+ageEl.value <18 ) {
-//         console.log("inscription refused")
-//     }else {
-//         console.log(`welcome ${FirstNameEl.value} you will get a git in ${getGift(ageEl.value)}` )
-//     }
-// })
+//exercie 1
 var formEl = document.getElementById("signup");
 var firstNameEl = document.getElementById("firstName");
 var ageEl = document.getElementById("age");
@@ -29,3 +14,48 @@ formEl.addEventListener("submit", function (e) {
         console.log("Welcome ".concat(firstNameEl.value, ", you will get a gift in ").concat(getGift(+ageEl.value), " years."));
     }
 });
+//exercice 2 
+var pseudo = 'test';
+var total = 200;
+// let isLoading: boolean = false;
+var totalString = total.toString();
+console.log('Total has type of:', typeof totalString);
+console.log(pseudo.length);
+var welComeMessage = "welcome ".concat(pseudo, " you got ").concat(total, " as a gift   ");
+console.log(welComeMessage);
+//exercice 3
+var numbers = [1, 3, 2.5, 5];
+numbers.push(20);
+console.log(numbers);
+//exercice 4
+var x;
+x = ["Hello", 20, "test"];
+console.log(x[2]);
+console.log(typeof (x[0]));
+//tuple 
+var member = {
+    access: ["admin", 1]
+};
+member.access[0] = "notAdmin";
+//on the tuple we are allowed to change the lengths of the arrays
+member.access.push("info");
+console.log(member.access);
+//type object 
+var car = {
+    color: "red",
+    date: 2022,
+    option: "GPS"
+};
+console.log(car.color);
+//application
+var names;
+var speed = 25;
+var isLoading;
+var age;
+var colors = [];
+colors.push("red");
+console.log(colors);
+var infos = [];
+infos.push("dupont", true, 40);
+console.log(infos);
+// export {};
