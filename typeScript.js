@@ -58,4 +58,30 @@ console.log(colors);
 var infos = [];
 infos.push("dupont", true, 40);
 console.log(infos);
+var members = {
+    firstName: "Dupont",
+    age: 20,
+    isLoading: true
+};
+console.log(members.age);
+var memb = {
+    firstName: "Dupont",
+    age: 20,
+    isLoading: true
+};
+console.log(memb.age);
+var informat = ["test", 20]; //Tuple
+informat[1] = 200;
+//we can push on Type types 
+informat.push("word");
+console.log(informat);
+//ENUM 
+var col;
+(function (col) {
+    col[col["red"] = 2] = "red";
+    col[col["Green"] = 3] = "Green";
+    col[col["Blue"] = 4] = "Blue";
+})(col || (col = {}));
+var colorName = col[2];
+console.log(colorName);
 // export {};

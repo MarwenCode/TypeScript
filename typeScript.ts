@@ -89,6 +89,42 @@ infos.push("dupont", true, 40)
 console.log(infos)
 
 
+let members: {
+    firstName: string;
+    age:number;
+    isLoading:boolean;
+}  = {
+    firstName:"Dupont",
+    age:20,
+    isLoading:true
+}
+console.log(members.age)
+
+let memb  = {
+    firstName:"Dupont",
+    age:20,
+    isLoading:true
+}
+console.log(memb.age)
+
+let informat: [string, number]= ["test", 20]; //Tuple
+informat[1] = 200
+//we can push on Type types 
+informat.push("word")
+console.log(informat)
+
+
+//ENUM 
+enum col {
+    red= 2,
+    Green,
+    Blue
+}
+
+let colorName = col[2]
+console.log(colorName)
+
+
 
 
 
