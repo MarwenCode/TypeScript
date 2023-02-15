@@ -84,4 +84,16 @@ var col;
 })(col || (col = {}));
 var colorName = col[2];
 console.log(colorName);
+//ANY
+//Unknow
+var inputData;
+inputData = 20;
+console.log(typeof inputData);
+var inputAge;
+if (typeof inputData === "number") {
+    inputAge = inputData;
+}
+//need to add an if statement to accepte the change of type from unknow to a number, because we can not asign the number
+//type directly 
+console.log(typeof inputAge);
 // export {};

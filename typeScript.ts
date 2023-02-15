@@ -126,6 +126,26 @@ console.log(colorName)
 
 
 
+//ANY
+
+//Unknow
+
+let inputData: unknown;
+inputData =20 
+
+console.log(typeof inputData);
+
+let inputAge: number
+if(typeof inputData === "number") {
+    inputAge = inputData
+}
+//need to add an if statement to accepte the change of type from unknow to a number, because we can not asign the number
+//type directly 
+
+console.log(typeof inputAge)
+
+
+
 
 
 
