@@ -122,18 +122,58 @@ var colorsss = function (arg1, arg2, arg3) {
 };
 colorsss();
 var divElment = document.querySelector("divelement");
-var col = function (arg1, arg2, arg3) {
-    var arrayList = ["test1", "test2", "test3"];
-    var h1 = document.createElement("h1");
-    h1.innerHTML = "title: ".concat(arg1);
-    divElment === null || divElment === void 0 ? void 0 : divElment.appendChild(h1);
-    var ListElment = document.querySelector("list");
-    for (var index = 0; index < arrayList.length; index++) {
-        console.log(arrayList[index]);
-        var liElement = document.createElement("li");
-        liElement.innerHTML = arrayList[index];
-        ListElment.appendChild(liElement);
+// let col = (arg1: string, arg2: string, arg3: string) => {
+//     let arrayList = ["test1", "test2", "test3"]
+//     const h1 = document.createElement("h1");
+//     h1.innerHTML = `title: ${arg1}`
+//     divElment?.appendChild(h1);
+//     const ListElment = document.querySelector("list")
+//     for (let index = 0; index < arrayList.length; index++) {
+//        console.log(arrayList[index])
+//        let liElement = document.createElement("li");
+//        liElement.innerHTML = arrayList[index]
+//        ListElment.appendChild(liElement)
+//     }
+//     divElment?.appendChild(ListElment)
+// }
+// Call Back Function 
+function gitfcallBack(age, sum) {
+    var memberAge = age + 3;
+    sum(memberAge);
+}
+gitfcallBack(40, function (num) { return console.log(num); });
+//union Type
+function concatenate(arg1, arg2) {
+    var result;
+    if (typeof arg1 === "number" && typeof arg2 === "number") {
+        result = arg1 + arg2;
     }
-    divElment === null || divElment === void 0 ? void 0 : divElment.appendChild(ListElment);
+    else if (typeof arg1 === "string" && typeof arg2 === "string") {
+        result = arg1 + arg2;
+    }
+    else if (typeof arg1 === "string" && typeof arg2 === "number") {
+        result = arg1 + arg2;
+    }
+    return result;
+}
+console.log(concatenate(10, 20));
+console.log(concatenate("test", "test"));
+console.log(concatenate("test", 2));
+var welcome = function (username) {
+    console.log("welcome", username);
 };
+welcome("marwen");
+var getProfileData = function (user) {
+    console.log("id:".concat(user.id, ", username : ").concat(user.username));
+};
+getProfileData({ id: 236, username: 'marwen' });
+var invoice = function (productDetails, userInfo) {
+    console.log("\n  productName: ".concat(productDetails.name, "\n  price: ").concat(productDetails.price, "\n  iDclient: ").concat(userInfo.id, "\n  nameClient: ").concat(userInfo.username, "\n  \n  "));
+};
+var productDet = {
+    name: "formation React",
+    price: 100
+};
+var userInf = { id: 122, username: "marwen" };
+invoice(productDet, userInf);
 // export {};

@@ -160,7 +160,7 @@ console.log(result1);
 //type Rest
 
 let colorsss = (arg1: string, arg2: string, arg3: string) => {
-    let arrayColor = ["red", "green", "blue"];
+  let arrayColor = ["red", "green", "blue"];
   for (let index = 0; index < arrayColor.length; index++) {
     console.log(arrayColor[index]);
   }
@@ -170,29 +170,112 @@ colorsss()
 
 const divElment = document.querySelector("divelement")
 
-let col = (arg1: string, arg2: string, arg3: string) => {
-    let arrayList = ["test1", "test2", "test3"]
+// let col = (arg1: string, arg2: string, arg3: string) => {
+//     let arrayList = ["test1", "test2", "test3"]
 
-    const h1 = document.createElement("h1");
-    h1.innerHTML = `title: ${arg1}`
-    divElment?.appendChild(h1);
+//     const h1 = document.createElement("h1");
+//     h1.innerHTML = `title: ${arg1}`
+//     divElment?.appendChild(h1);
 
-    const ListElment = document.querySelector("list")
+//     const ListElment = document.querySelector("list")
 
 
-   
 
-    for (let index = 0; index < arrayList.length; index++) {
-       console.log(arrayList[index])
-       let liElement = document.createElement("li");
-       liElement.innerHTML = arrayList[index]
-       
-       ListElment.appendChild(liElement)
-        
-    }
 
-    divElment?.appendChild(ListElment)
+//     for (let index = 0; index < arrayList.length; index++) {
+//        console.log(arrayList[index])
+//        let liElement = document.createElement("li");
+//        liElement.innerHTML = arrayList[index]
+
+//        ListElment.appendChild(liElement)
+
+//     }
+
+//     divElment?.appendChild(ListElment)
+// }
+
+// Call Back Function 
+function gitfcallBack(age: number, sum: (arg: number) => void) {
+  const memberAge = age + 3;
+  sum(memberAge)
+
 }
+
+gitfcallBack(40, (num) => console.log(num))
+
+
+//union Type
+function concatenate(arg1: number | string, arg2: number | string) {
+  let result
+
+  if (typeof arg1 === "number" && typeof arg2 === "number") {
+
+    result = arg1 + arg2
+  } else if (typeof arg1 === "string" && typeof arg2 === "string") {
+    result = arg1 + arg2
+  } else if (typeof arg1 === "string" && typeof arg2 === "number") {
+    result = arg1 + arg2
+  }
+
+  return result
+}
+
+console.log(concatenate(10, 20))
+console.log(concatenate("test", "test"))
+console.log(concatenate("test", 2))
+
+
+//////////////////////////////////////////////////Alias type 
+type NumStr = number | string;
+type ObjIdUser = { id: number, username: string}
+type ObjInvoice = { name: string, price: number }
+
+
+
+const welcome = (username: string) => {
+
+  console.log("welcome", username)
+
+}
+
+welcome("marwen")
+
+const getProfileData = (user: ObjIdUser) => {
+  console.log(`id:${user.id}, username : ${user.username}`)
+
+}
+
+getProfileData({ id: 236, username: 'marwen' })
+
+const invoice = (productDetails: ObjInvoice, userInfo : ObjIdUser  ) => {
+  console.log(`
+  productName: ${productDetails.name}
+  price: ${productDetails.price}
+  iDclient: ${userInfo.id}
+  nameClient: ${userInfo.username}
+  
+  `)
+}
+
+const productDet = {
+  name: "formation React",
+  price: 100
+
+
+}
+
+const userInf = {id:122, username: "marwen"}
+
+invoice(productDet, userInf )
+
+
+
+
+
+
+
+
+
 
 
 
