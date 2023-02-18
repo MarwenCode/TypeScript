@@ -176,4 +176,17 @@ var productDet = {
 };
 var userInf = { id: 122, username: "marwen" };
 invoice(productDet, userInf);
+//literal Types 
+function totall(arg1, arg2, totalversion) {
+    var result;
+    if (totalversion === "getStringvalue") {
+        result = arg1.toString() + arg2.toString();
+    }
+    else {
+        result = arg1 + arg2;
+    }
+    return result;
+}
+var totalResult = totall(20, 10, 'getStringvalue');
+console.log(totalResult);
 // export {};

@@ -269,6 +269,22 @@ const userInf = {id:122, username: "marwen"}
 invoice(productDet, userInf )
 
 
+//literal Types 
+function totall(arg1: number, arg2: number, totalversion: "getStringvalue"){
+  let result;
+  if(totalversion === "getStringvalue") {
+    result = arg1.toString() + arg2.toString()
+  }else {
+    result = arg1 + arg2
+  }
+   return result
+}
+
+const totalResult = totall(20, 10, 'getStringvalue')
+
+console.log(totalResult)
+
+
 
 
 
