@@ -284,6 +284,75 @@ const totalResult = totall(20, 10, 'getStringvalue')
 
 console.log(totalResult)
 
+// NEVER type 
+
+type AcceptedValues = string | number
+
+const formattt = (vall: AcceptedValues) => {
+  
+  if (typeof vall === "string") {
+    return vall.length;
+
+  }else if (typeof vall === "number") {
+    return vall.toString()
+  }else {
+    const verifyCases: never = vall
+  }
+}
+
+console.log(formattt(200)) ;
+
+const throwError = (errMsg: never) => {
+  throw new Error(errMsg)
+}
+
+// const result = throwError("test error message")
+// console.log(result)
+
+
+const getTotal = (arg: number) => {
+
+  if(arg < 5 ) {
+  //  console.log(throwError("test")) 
+  } else if (arg === 5) {
+    console.log(arg)
+  } else {
+    return arg + 10
+  }
+
+}
+
+
+
+getTotal(4)
+
+
+//Type Assertions
+
+// As : 
+let someValue: unknown = "this is a string";
+// let strLength = (someValue as string).length
+// Angle bracket :
+let strLength = (<string>someValue).length
+console.log(strLength)
+
+// const firstname:NodeListOf<HTMLInputElement> = document.querySelectorAll("firstName")
+// console.log(typeof firstname)
+const firstname = document.getElementById("firstName") as HTMLInputElement
+console.log(typeof firstname.value)
+
+
+const Namefirst = <HTMLInputElement> document.getElementById("firstName");
+console.log(typeof Namefirst.value)
+
+const nameFirstt = document.getElementById("firstName");
+let inputValue = (nameFirstt as HTMLInputElement);
+let inputValue1 = (<HTMLInputElement> nameFirstt).value
+
+console.log(typeof inputValue1)
+
+
+
 
 
 

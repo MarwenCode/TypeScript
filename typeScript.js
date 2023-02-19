@@ -189,4 +189,50 @@ function totall(arg1, arg2, totalversion) {
 }
 var totalResult = totall(20, 10, 'getStringvalue');
 console.log(totalResult);
+var formattt = function (vall) {
+    if (typeof vall === "string") {
+        return vall.length;
+    }
+    else if (typeof vall === "number") {
+        return vall.toString();
+    }
+    else {
+        var verifyCases = vall;
+    }
+};
+console.log(formattt(200));
+var throwError = function (errMsg) {
+    throw new Error(errMsg);
+};
+// const result = throwError("test error message")
+// console.log(result)
+var getTotal = function (arg) {
+    if (arg < 5) {
+        //  console.log(throwError("test")) 
+    }
+    else if (arg === 5) {
+        console.log(arg);
+    }
+    else {
+        return arg + 10;
+    }
+};
+getTotal(4);
+//Type Assertions
+// As : 
+var someValue = "this is a string";
+// let strLength = (someValue as string).length
+// Angle bracket :
+var strLength = someValue.length;
+console.log(strLength);
+// const firstname:NodeListOf<HTMLInputElement> = document.querySelectorAll("firstName")
+// console.log(typeof firstname)
+var firstname = document.getElementById("firstName");
+console.log(typeof firstname.value);
+var Namefirst = document.getElementById("firstName");
+console.log(typeof Namefirst.value);
+var nameFirstt = document.getElementById("firstName");
+var inputValue = nameFirstt;
+var inputValue1 = nameFirstt.value;
+console.log(typeof inputValue1);
 // export {};
