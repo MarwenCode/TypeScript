@@ -1,7 +1,23 @@
 //exercie 1
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var formEl = document.getElementById("signup");
 var firstNameEl = document.getElementById("firstName");
 var ageEl = document.getElementById("age");
+var gender = document.getElementById("gender");
 var getGift = function (age) {
     return +age + 3;
 };
@@ -120,7 +136,7 @@ var colorsss = function (arg1, arg2, arg3) {
         console.log(arrayColor[index]);
     }
 };
-colorsss();
+// colorsss()
 var divElment = document.querySelector("divelement");
 // let col = (arg1: string, arg2: string, arg3: string) => {
 //     let arrayList = ["test1", "test2", "test3"]
@@ -136,7 +152,7 @@ var divElment = document.querySelector("divelement");
 //     }
 //     divElment?.appendChild(ListElment)
 // }
-// Call Back Function 
+// Call Back Function
 function gitfcallBack(age, sum) {
     var memberAge = age + 3;
     sum(memberAge);
@@ -166,7 +182,7 @@ welcome("marwen");
 var getProfileData = function (user) {
     console.log("id:".concat(user.id, ", username : ").concat(user.username));
 };
-getProfileData({ id: 236, username: 'marwen' });
+getProfileData({ id: 236, username: "marwen" });
 var invoice = function (productDetails, userInfo) {
     console.log("\n  productName: ".concat(productDetails.name, "\n  price: ").concat(productDetails.price, "\n  iDclient: ").concat(userInfo.id, "\n  nameClient: ").concat(userInfo.username, "\n  \n  "));
 };
@@ -176,7 +192,7 @@ var productDet = {
 };
 var userInf = { id: 122, username: "marwen" };
 invoice(productDet, userInf);
-//literal Types 
+//literal Types
 function totall(arg1, arg2, totalversion) {
     var result;
     if (totalversion === "getStringvalue") {
@@ -187,7 +203,7 @@ function totall(arg1, arg2, totalversion) {
     }
     return result;
 }
-var totalResult = totall(20, 10, 'getStringvalue');
+var totalResult = totall(20, 10, "getStringvalue");
 console.log(totalResult);
 var formattt = function (vall) {
     if (typeof vall === "string") {
@@ -208,7 +224,7 @@ var throwError = function (errMsg) {
 // console.log(result)
 var getTotal = function (arg) {
     if (arg < 5) {
-        //  console.log(throwError("test")) 
+        //  console.log(throwError("test"))
     }
     else if (arg === 5) {
         console.log(arg);
@@ -219,7 +235,7 @@ var getTotal = function (arg) {
 };
 getTotal(4);
 //Type Assertions
-// As : 
+// As :
 var someValue = "this is a string";
 // let strLength = (someValue as string).length
 // Angle bracket :
@@ -235,4 +251,55 @@ var nameFirstt = document.getElementById("firstName");
 var inputValue = nameFirstt;
 var inputValue1 = nameFirstt.value;
 console.log(typeof inputValue1);
+formEl.addEventListener("submit", function (e) {
+    e.preventDefault();
+    console.log(firstNameEl.value, ageEl.valueAsNumber, gender.value);
+});
+// Classes
+var Invoice = /** @class */ (function () {
+    function Invoice(client, product, price) {
+        this.client = client;
+        this.product = product;
+        this.price = price;
+    }
+    return Invoice;
+}());
+var invoice1 = new Invoice("test", "productname", 40);
+var invoice2 = new Invoice("example name", "productname test", 45);
+var invoiceArray = [];
+invoiceArray.push(invoice1, invoice2);
+console.log(invoiceArray);
+// héritage & polyphormisme
+//class 1
+var Person = /** @class */ (function () {
+    function Person(n, h, eyes) {
+        this.name = n;
+        this.hair = h;
+        this.eyes = eyes;
+    }
+    Person.prototype.speak = function () {
+        console.log(" i am ".concat(this.name, " and my hair is ").concat(this.hair));
+    };
+    return Person;
+}());
+//class 2
+var Person2 = /** @class */ (function (_super) {
+    __extends(Person2, _super);
+    function Person2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Person2.prototype.speak = function () {
+        console.log(" i am ".concat(this.name, " and my hair is ").concat(this.hair, " english version"));
+    };
+    Person2.prototype.speakFirstLanguage = function () {
+        _super.prototype.speak.call(this);
+    };
+    return Person2;
+}(Person));
+// const child1 = new Person("Riahan", "red", 2)
+// console.log(child1);
+// child1.speak();
+var child2 = new Person2("ria", "black", 2);
+// console.log(child2);
+child2.speak();
 // export {};

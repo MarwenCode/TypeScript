@@ -3,6 +3,7 @@
 const formEl = document.getElementById("signup") as HTMLInputElement;
 const firstNameEl = document.getElementById("firstName") as HTMLInputElement;
 const ageEl = document.getElementById("age") as HTMLInputElement;
+const gender = document.getElementById("gender") as HTMLSelectElement;
 
 const getGift = (age: number) => {
   return +age + 3;
@@ -166,9 +167,9 @@ let colorsss = (arg1: string, arg2: string, arg3: string) => {
   }
 };
 
-colorsss()
+// colorsss()
 
-const divElment = document.querySelector("divelement")
+const divElment = document.querySelector("divelement");
 
 // let col = (arg1: string, arg2: string, arg3: string) => {
 //     let arrayList = ["test1", "test2", "test3"]
@@ -178,9 +179,6 @@ const divElment = document.querySelector("divelement")
 //     divElment?.appendChild(h1);
 
 //     const ListElment = document.querySelector("list")
-
-
-
 
 //     for (let index = 0; index < arrayList.length; index++) {
 //        console.log(arrayList[index])
@@ -194,177 +192,207 @@ const divElment = document.querySelector("divelement")
 //     divElment?.appendChild(ListElment)
 // }
 
-// Call Back Function 
+// Call Back Function
 function gitfcallBack(age: number, sum: (arg: number) => void) {
   const memberAge = age + 3;
-  sum(memberAge)
-
+  sum(memberAge);
 }
 
-gitfcallBack(40, (num) => console.log(num))
-
+gitfcallBack(40, (num) => console.log(num));
 
 //union Type
 function concatenate(arg1: number | string, arg2: number | string) {
-  let result
+  let result;
 
   if (typeof arg1 === "number" && typeof arg2 === "number") {
-
-    result = arg1 + arg2
+    result = arg1 + arg2;
   } else if (typeof arg1 === "string" && typeof arg2 === "string") {
-    result = arg1 + arg2
+    result = arg1 + arg2;
   } else if (typeof arg1 === "string" && typeof arg2 === "number") {
-    result = arg1 + arg2
+    result = arg1 + arg2;
   }
 
-  return result
+  return result;
 }
 
-console.log(concatenate(10, 20))
-console.log(concatenate("test", "test"))
-console.log(concatenate("test", 2))
+console.log(concatenate(10, 20));
+console.log(concatenate("test", "test"));
+console.log(concatenate("test", 2));
 
-
-//////////////////////////////////////////////////Alias type 
+//////////////////////////////////////////////////Alias type
 type NumStr = number | string;
-type ObjIdUser = { id: number, username: string}
-type ObjInvoice = { name: string, price: number }
-
-
+type ObjIdUser = { id: number; username: string };
+type ObjInvoice = { name: string; price: number };
 
 const welcome = (username: string) => {
+  console.log("welcome", username);
+};
 
-  console.log("welcome", username)
-
-}
-
-welcome("marwen")
+welcome("marwen");
 
 const getProfileData = (user: ObjIdUser) => {
-  console.log(`id:${user.id}, username : ${user.username}`)
+  console.log(`id:${user.id}, username : ${user.username}`);
+};
 
-}
+getProfileData({ id: 236, username: "marwen" });
 
-getProfileData({ id: 236, username: 'marwen' })
-
-const invoice = (productDetails: ObjInvoice, userInfo : ObjIdUser  ) => {
+const invoice = (productDetails: ObjInvoice, userInfo: ObjIdUser) => {
   console.log(`
   productName: ${productDetails.name}
   price: ${productDetails.price}
   iDclient: ${userInfo.id}
   nameClient: ${userInfo.username}
   
-  `)
-}
+  `);
+};
 
 const productDet = {
   name: "formation React",
-  price: 100
+  price: 100,
+};
 
+const userInf = { id: 122, username: "marwen" };
 
-}
+invoice(productDet, userInf);
 
-const userInf = {id:122, username: "marwen"}
-
-invoice(productDet, userInf )
-
-
-//literal Types 
-function totall(arg1: number, arg2: number, totalversion: "getStringvalue"){
+//literal Types
+function totall(arg1: number, arg2: number, totalversion: "getStringvalue") {
   let result;
-  if(totalversion === "getStringvalue") {
-    result = arg1.toString() + arg2.toString()
-  }else {
-    result = arg1 + arg2
+  if (totalversion === "getStringvalue") {
+    result = arg1.toString() + arg2.toString();
+  } else {
+    result = arg1 + arg2;
   }
-   return result
+  return result;
 }
 
-const totalResult = totall(20, 10, 'getStringvalue')
+const totalResult = totall(20, 10, "getStringvalue");
 
-console.log(totalResult)
+console.log(totalResult);
 
-// NEVER type 
+// NEVER type
 
-type AcceptedValues = string | number
+type AcceptedValues = string | number;
 
 const formattt = (vall: AcceptedValues) => {
-  
   if (typeof vall === "string") {
     return vall.length;
-
-  }else if (typeof vall === "number") {
-    return vall.toString()
-  }else {
-    const verifyCases: never = vall
+  } else if (typeof vall === "number") {
+    return vall.toString();
+  } else {
+    const verifyCases: never = vall;
   }
-}
+};
 
-console.log(formattt(200)) ;
+console.log(formattt(200));
 
 const throwError = (errMsg: never) => {
-  throw new Error(errMsg)
-}
+  throw new Error(errMsg);
+};
 
 // const result = throwError("test error message")
 // console.log(result)
 
-
 const getTotal = (arg: number) => {
-
-  if(arg < 5 ) {
-  //  console.log(throwError("test")) 
+  if (arg < 5) {
+    //  console.log(throwError("test"))
   } else if (arg === 5) {
-    console.log(arg)
+    console.log(arg);
   } else {
-    return arg + 10
+    return arg + 10;
   }
+};
 
-}
-
-
-
-getTotal(4)
-
+getTotal(4);
 
 //Type Assertions
 
-// As : 
+// As :
 let someValue: unknown = "this is a string";
 // let strLength = (someValue as string).length
 // Angle bracket :
-let strLength = (<string>someValue).length
-console.log(strLength)
+let strLength = (<string>someValue).length;
+console.log(strLength);
 
 // const firstname:NodeListOf<HTMLInputElement> = document.querySelectorAll("firstName")
 // console.log(typeof firstname)
-const firstname = document.getElementById("firstName") as HTMLInputElement
-console.log(typeof firstname.value)
+const firstname = document.getElementById("firstName") as HTMLInputElement;
+console.log(typeof firstname.value);
 
-
-const Namefirst = <HTMLInputElement> document.getElementById("firstName");
-console.log(typeof Namefirst.value)
+const Namefirst = <HTMLInputElement>document.getElementById("firstName");
+console.log(typeof Namefirst.value);
 
 const nameFirstt = document.getElementById("firstName");
-let inputValue = (nameFirstt as HTMLInputElement);
-let inputValue1 = (<HTMLInputElement> nameFirstt).value
+let inputValue = nameFirstt as HTMLInputElement;
+let inputValue1 = (<HTMLInputElement>nameFirstt).value;
 
-console.log(typeof inputValue1)
+console.log(typeof inputValue1);
 
+formEl.addEventListener("submit", (e: Event) => {
+  e.preventDefault();
 
+  console.log(firstNameEl.value, ageEl.valueAsNumber, gender.value);
+});
 
+// Classes
+class Invoice {
+  client;
+  product;
+  price;
 
+  constructor(client, product, price) {
+    this.client = client;
+    this.product = product;
+    this.price = price;
+  }
+}
 
+const invoice1 = new Invoice("test", "productname", 40);
+const invoice2 = new Invoice("example name", "productname test", 45);
+let invoiceArray: Invoice[] = [];
+invoiceArray.push(invoice1, invoice2);
+console.log(invoiceArray);
 
+// héritage & polyphormisme
 
+//class 1
+class Person {
+  name: string;
+  hair: string;
+  eyes: number;
 
+  constructor(n: string, h: string, eyes: number) {
+    this.name = n;
+    this.hair = h;
+    this.eyes = eyes;
+  }
 
+  speak() {
+    console.log(` i am ${this.name} and my hair is ${this.hair}`);
+  }
+}
 
+//class 2
 
+class Person2 extends Person {
+  speak() {
+    console.log(
+      ` i am ${this.name} and my hair is ${this.hair} english version`
+    );
+  }
 
+  speakFirstLanguage() {
+    super.speak();
+  }
+}
 
+// const child1 = new Person("Riahan", "red", 2)
 
+// console.log(child1);
+// child1.speak();
 
-
+const child2: Person = new Person2("ria", "black", 2);
+// console.log(child2);
+child2.speak();
 
 // export {};
