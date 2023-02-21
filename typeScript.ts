@@ -357,18 +357,30 @@ console.log(invoiceArray);
 
 //class 1
 class Person {
-  name: string;
-  hair: string;
-  eyes: number;
+  //  private name: string;
+  //  private hair: string;
+  // private eyes: number;
 
-  constructor(n: string, h: string, eyes: number) {
-    this.name = n;
-    this.hair = h;
-    this.eyes = eyes;
+  constructor(
+    public name: string,
+    private hair: string,
+    protected eyes: number
+  ) {
+    // this.name = n;
+    // this.hair = h;
+    // this.eyes = eyes;
   }
 
   speak() {
     console.log(` i am ${this.name} and my hair is ${this.hair}`);
+  }
+
+  getHair() {
+    return this.hair;
+  }
+
+  setHair(newhairColor: string) {
+    this.hair = newhairColor;
   }
 }
 
@@ -386,6 +398,15 @@ class Person2 extends Person {
   }
 }
 
+class Person3 extends Person {
+  getData() {
+    // only protected & public are accessible form the heritate classes
+    //private not possible to access
+
+    return this.eyes;
+  }
+}
+
 // const child1 = new Person("Riahan", "red", 2)
 
 // console.log(child1);
@@ -394,5 +415,48 @@ class Person2 extends Person {
 const child2: Person = new Person2("ria", "black", 2);
 // console.log(child2);
 child2.speak();
+
+// private public getter setter
+const child3: Person = new Person("nameChild", "black", 2);
+// const Child3Edited = child3.getHair()
+child3.setHair("white");
+console.log(child3);
+
+//read only ==> in case of read only we can access the properties read only , only by the constructor
+class Car {
+  // readonly color: string;
+  // public speed: number = 2
+
+  constructor(readonly color: string, public speed) {
+    // this.color = color
+  }
+}
+
+const carName = new Car("white", 5);
+console.log(carName);
+
+
+
+
+
+//interfaces
+
+class Mother {
+  name: string;
+  eyes: number;
+
+  constructor(name: string, eyes: number) {
+    this.name = name;
+    this.eyes = eyes;
+  }
+
+  speak() {
+    console.log(` hello my name is ${this.name}`);
+  }
+}
+
+const kid = new Mother("clientName", 2);
+
+kid.speak()
 
 // export {};

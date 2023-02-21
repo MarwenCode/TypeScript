@@ -272,13 +272,25 @@ console.log(invoiceArray);
 // héritage & polyphormisme
 //class 1
 var Person = /** @class */ (function () {
-    function Person(n, h, eyes) {
-        this.name = n;
-        this.hair = h;
+    //  private name: string;
+    //  private hair: string;
+    // private eyes: number;
+    function Person(name, hair, eyes) {
+        this.name = name;
+        this.hair = hair;
         this.eyes = eyes;
+        // this.name = n;
+        // this.hair = h;
+        // this.eyes = eyes;
     }
     Person.prototype.speak = function () {
         console.log(" i am ".concat(this.name, " and my hair is ").concat(this.hair));
+    };
+    Person.prototype.getHair = function () {
+        return this.hair;
+    };
+    Person.prototype.setHair = function (newhairColor) {
+        this.hair = newhairColor;
     };
     return Person;
 }());
@@ -296,10 +308,53 @@ var Person2 = /** @class */ (function (_super) {
     };
     return Person2;
 }(Person));
+var Person3 = /** @class */ (function (_super) {
+    __extends(Person3, _super);
+    function Person3() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Person3.prototype.getData = function () {
+        // only protected & public are accessible form the heritate classes
+        //private not possible to access
+        return this.eyes;
+    };
+    return Person3;
+}(Person));
 // const child1 = new Person("Riahan", "red", 2)
 // console.log(child1);
 // child1.speak();
 var child2 = new Person2("ria", "black", 2);
 // console.log(child2);
 child2.speak();
+// private public getter setter
+var child3 = new Person("nameChild", "black", 2);
+// const Child3Edited = child3.getHair()
+child3.setHair("white");
+console.log(child3);
+//read only ==> in case of read only we can access the properties read only , only by the constructor
+var Car = /** @class */ (function () {
+    // readonly color: string;
+    // public speed: number = 2
+    function Car(color, speed) {
+        this.color = color;
+        this.speed = speed;
+        // this.color = color
+    }
+    return Car;
+}());
+var carName = new Car("white", 5);
+console.log(carName);
+//interfaces
+var Mother = /** @class */ (function () {
+    function Mother(name, eyes) {
+        this.name = name;
+        this.eyes = eyes;
+    }
+    Mother.prototype.speak = function () {
+        console.log(" hello my name is ".concat(this.name));
+    };
+    return Mother;
+}());
+var kid = new Mother("clientName", 2);
+kid.speak();
 // export {};
