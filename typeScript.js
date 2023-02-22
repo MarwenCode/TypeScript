@@ -357,4 +357,33 @@ var Mother = /** @class */ (function () {
 }());
 var kid = new Mother("clientName", 2);
 kid.speak();
+// GENERICS : T is a placeholder allow as to specify the different types that we can use it 
+var identity = function (arg) {
+    return arg;
+};
+var output = identity("Hello");
+var output1 = identity(200);
+var output2 = identity({ title: "hello world" });
+console.log(output, output1, output2);
+var ObjName = { name: "username" };
+var ObjAge = { age: 20 };
+var ArrayFunction = function (name, age) {
+    var arr = [];
+    arr.push(name, age);
+    return arr;
+};
+var result = ArrayFunction(ObjName, ObjAge);
+console.log(result);
+var userData = {
+    id: 24,
+    data: ["username", "admin"]
+};
+var userData2 = {
+    id: 24,
+    data: { name: "username2", title: "admin2" }
+};
+var userData3 = {
+    id: 12,
+    data: { name: "username3", title: "admin3" }
+};
 // export {};
