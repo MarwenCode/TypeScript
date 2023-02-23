@@ -512,16 +512,46 @@ const userData3: User<{name:string, title:string}> = {
   data: {name:"username3", title:"admin3"}
 }
 
- 
+ //GENERICS with CLASSES
+
+ class DataClass<T extends string | number | object>{
+    data: Array<T> = []
+
+    saveData(value: T) {
+      this.data.push(value)
+    }
+
+    getAlldata() {
+      return [...this.data]
+    }
+ }
+
+ const stringData = new DataClass();
+ stringData.saveData("testData");
+ stringData.saveData("testData1");
+ stringData.saveData(10);
+ stringData.saveData({title: "title", admin: "admin"});
+ const resultData = stringData.getAlldata()
+ console.log(resultData)
+
+//Utility types partial
+interface Todo {
+  title: string
+  description:string
+} 
+
+const FunctionTodo = (title:string, description:string) => {
+  let todoList: Partial<Todo> = {}
+  todoList.title = title
+  // todoList.description = description
+
+  return todoList
 
 
+}
 
-
-
-
-
-
-
+const resultTodo = FunctionTodo("title", "descr");
+console.log(resultTodo)
 
 
 

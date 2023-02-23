@@ -14,6 +14,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 var formEl = document.getElementById("signup");
 var firstNameEl = document.getElementById("firstName");
 var ageEl = document.getElementById("age");
@@ -386,4 +395,32 @@ var userData3 = {
     id: 12,
     data: { name: "username3", title: "admin3" }
 };
+//GENERICS with CLASSES
+var DataClass = /** @class */ (function () {
+    function DataClass() {
+        this.data = [];
+    }
+    DataClass.prototype.saveData = function (value) {
+        this.data.push(value);
+    };
+    DataClass.prototype.getAlldata = function () {
+        return __spreadArray([], this.data, true);
+    };
+    return DataClass;
+}());
+var stringData = new DataClass();
+stringData.saveData("testData");
+stringData.saveData("testData1");
+stringData.saveData(10);
+stringData.saveData({ title: "title", admin: "admin" });
+var resultData = stringData.getAlldata();
+console.log(resultData);
+var FunctionTodo = function (title, description) {
+    var todoList = {};
+    todoList.title = title;
+    // todoList.description = description
+    return todoList;
+};
+var resultTodo = FunctionTodo("title", "descr");
+console.log(resultTodo);
 // export {};
