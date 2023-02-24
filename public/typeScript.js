@@ -1,3 +1,4 @@
+"use strict";
 //exercie 1
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -59,7 +60,7 @@ console.log(x[2]);
 console.log(typeof x[0]);
 //tuple
 var member = {
-    access: ["admin", 1]
+    access: ["admin", 1],
 };
 member.access[0] = "notAdmin";
 //on the tuple we are allowed to change the lengths of the arrays
@@ -69,7 +70,7 @@ console.log(member.access);
 var car = {
     color: "red",
     date: 2022,
-    option: "GPS"
+    option: "GPS",
 };
 console.log(car.color);
 //application
@@ -86,13 +87,13 @@ console.log(infos);
 var members = {
     firstName: "Dupont",
     age: 20,
-    isLoading: true
+    isLoading: true,
 };
 console.log(members.age);
 var memb = {
     firstName: "Dupont",
     age: 20,
-    isLoading: true
+    isLoading: true,
 };
 console.log(memb.age);
 var informat = ["test", 20]; //Tuple
@@ -197,7 +198,7 @@ var invoice = function (productDetails, userInfo) {
 };
 var productDet = {
     name: "formation React",
-    price: 100
+    price: 100,
 };
 var userInf = { id: 122, username: "marwen" };
 invoice(productDet, userInf);
@@ -423,4 +424,5 @@ var FunctionTodo = function (title, description) {
 };
 var resultTodo = FunctionTodo("title", "descr");
 console.log(resultTodo);
+console.log("test js");
 // export {};
