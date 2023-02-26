@@ -554,7 +554,14 @@ const resultTodo = FunctionTodo("title", "descr");
 console.log(resultTodo)
 
 
-console.log("test js")
+console.log("test js");
+
+
+// import export modules 
+import { PersonInter } from "./PersonInterface.js";
+const person = new PersonInter("testname", 20);
+console.log(person)
+
 
 
 

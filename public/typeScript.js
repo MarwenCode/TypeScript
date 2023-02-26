@@ -1,4 +1,3 @@
-"use strict";
 //exercie 1
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -425,4 +424,9 @@ var FunctionTodo = function (title, description) {
 var resultTodo = FunctionTodo("title", "descr");
 console.log(resultTodo);
 console.log("test js");
+// import export modules 
+import { PersonInter } from "./PersonInterface.js";
+var person = new PersonInter("testname", 20);
+console.log(person);
 // export {};
+//# sourceMappingURL=typeScript.js.map
