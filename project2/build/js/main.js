@@ -20,3 +20,27 @@ const sum = (a, b) => {
     return a + b;
 };
 let postId;
+//Arrays, Tuples & Enums
+//Arrays
+let stringArr = ["one", "hey", "Dave"];
+let guitars = ["Start", "Les Paul", 5150];
+let mixedData = ['EVH', 1984, true];
+stringArr.push("test");
+guitars.unshift("jim");
+console.log(guitars);
+console.log(typeof stringArr);
+let test = [];
+let bands = [];
+bands.push("My band");
+//Tuple
+let myTuple = ["name", 42, true];
+let mixed = ["name", 1, false];
+let evh = {
+    name: "Edy",
+    active: false,
+    albums: [152, 'ki52', 12]
+};
+const greatGuitarist = (nameOfGuitarist) => {
+    return `Hello ${nameOfGuitarist.name}`;
+};
+console.log(greatGuitarist(evh));
