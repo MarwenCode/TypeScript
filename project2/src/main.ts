@@ -53,13 +53,24 @@ bands.push("My band")
  let mixed = ["name", 1, false];
 
 // objects
+
+
+//type
 type Guitarist = {
     name: string;
     active: boolean;
     albums: (string | number) []
 }
 
-let evh: Guitarist = {
+
+//interface
+interface GuitarPlayer {
+    name?: string,
+    active:boolean,
+    albums: (string | number)[]
+}
+
+let evh: GuitarPlayer = {
     name: "Edy",
     active: false,
     albums: [152, 'ki52', 12]
@@ -68,5 +79,43 @@ let evh: Guitarist = {
 const greatGuitarist = (nameOfGuitarist: Guitarist) => {
     return `Hello ${nameOfGuitarist.name}`
 }
-console.log(greatGuitarist(evh))
+// console.log(greatGuitarist(evh))
+
+
+
  
+
+const GuitPalyerFunction = (nameofplayer: GuitarPlayer) => {
+
+    if(nameofplayer.name) {
+        return `Hello my name is: ${nameofplayer.name?.toUpperCase()}`
+
+    }else {
+        return 'Hello'
+    }
+
+  
+}
+
+console.log(GuitPalyerFunction(evh))
+
+//Enums
+enum Grade {
+    U,
+    D,
+    C,
+    B,
+    A,
+}
+
+console.log(Grade.U);
+
+enum Grade1 {
+    U = 1,
+    D,
+    C,
+    B,
+    A,
+}
+
+console.log(Grade1.U)

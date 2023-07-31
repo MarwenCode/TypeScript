@@ -43,4 +43,33 @@ let evh = {
 const greatGuitarist = (nameOfGuitarist) => {
     return `Hello ${nameOfGuitarist.name}`;
 };
-console.log(greatGuitarist(evh));
+// console.log(greatGuitarist(evh))
+const GuitPalyerFunction = (nameofplayer) => {
+    var _a;
+    if (nameofplayer.name) {
+        return `Hello my name is: ${(_a = nameofplayer.name) === null || _a === void 0 ? void 0 : _a.toUpperCase()}`;
+    }
+    else {
+        return 'Hello';
+    }
+};
+console.log(GuitPalyerFunction(evh));
+//Enums
+var Grade;
+(function (Grade) {
+    Grade[Grade["U"] = 0] = "U";
+    Grade[Grade["D"] = 1] = "D";
+    Grade[Grade["C"] = 2] = "C";
+    Grade[Grade["B"] = 3] = "B";
+    Grade[Grade["A"] = 4] = "A";
+})(Grade || (Grade = {}));
+console.log(Grade.U);
+var Grade1;
+(function (Grade1) {
+    Grade1[Grade1["U"] = 1] = "U";
+    Grade1[Grade1["D"] = 2] = "D";
+    Grade1[Grade1["C"] = 3] = "C";
+    Grade1[Grade1["B"] = 4] = "B";
+    Grade1[Grade1["A"] = 5] = "A";
+})(Grade1 || (Grade1 = {}));
+console.log(Grade1.U);
