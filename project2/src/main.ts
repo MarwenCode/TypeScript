@@ -119,3 +119,63 @@ enum Grade1 {
 }
 
 console.log(Grade1.U)
+
+
+//Type Aliases
+type stringOrNumber = string | number;
+
+type stringOnNumberArray =(string | number)[];
+
+type GuitarrPlayer = {
+    name:string,
+    active:boolean,
+    albums:stringOnNumberArray
+}
+
+//Literal types
+let myname: 'Dave';
+let userName : "Dave" | 'Jon';
+userName = "Jon";
+
+//functions
+
+const add = (a: number, b: number): number => {
+    return a + b
+}
+
+const logMsg = (message: any): void => {
+    console.log(message)
+}
+
+
+logMsg("hello");
+logMsg(add(2,3));
+
+
+type functionType = (a: number, b:number) => number;
+
+// we can use interface too
+
+// interface functionType {
+//     (a: number, b: number): number
+// }
+
+const multiply : functionType = (c , d ) => {
+    return c * d
+}
+
+logMsg(multiply(2,2))
+
+//optional parameters
+const addAll = (a: number, b: number, c?: number): number => {
+
+    if(typeof c !== 'undefined') {
+        return a + b + c
+        
+    }else {
+        return a + b
+    }
+ 
+}
+
+

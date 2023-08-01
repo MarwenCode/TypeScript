@@ -73,3 +73,33 @@ var Grade1;
     Grade1[Grade1["A"] = 5] = "A";
 })(Grade1 || (Grade1 = {}));
 console.log(Grade1.U);
+//Literal types
+let myname;
+let userName;
+userName = "Jon";
+//functions
+const add = (a, b) => {
+    return a + b;
+};
+const logMsg = (message) => {
+    console.log(message);
+};
+logMsg("hello");
+logMsg(add(2, 3));
+// we can use interface too
+// interface functionType {
+//     (a: number, b: number): number
+// }
+const multiply = (c, d) => {
+    return c * d;
+};
+logMsg(multiply(2, 2));
+//optional parameters
+const addAll = (a, b, c) => {
+    if (typeof c !== 'undefined') {
+        return a + b + c;
+    }
+    else {
+        return a + b;
+    }
+};
