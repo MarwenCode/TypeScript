@@ -218,3 +218,85 @@ const nextImg = <HTMLImageElement>document.getElementById('#img')
 
 // img.src
 // myImg.src
+
+//CLASSES
+
+class Coder {
+
+    secondLang!:string;
+
+    constructor(
+        public name: string,
+        public music: string,
+        private age:number,
+        protected lang: string = "TypeScript"
+
+        
+    ) {
+        this.name = name;
+        this.music = music;
+        this.age = age;
+        this.lang = lang
+    }
+
+    public getAge() {
+        return `Hello i am ${this.age}`
+    }
+
+    
+}
+
+const Dave = new Coder('Dave', 'Rock', 42);
+console.log(Dave.getAge());
+// console.log(Dave.age);
+// console.log(Dave.lang);
+
+
+class WebDev extends Coder {
+    constructor(
+        public computer: string,
+        name: string,
+        music: string, 
+        age: number,
+    ) {
+        super(name, music, age);
+        this.computer = computer
+    }
+
+    public getLang() {
+        return `I write ${this.lang}`
+    }
+}
+
+const Sara = new WebDev('Mac', 'Sara', 'rock', 25);
+console.log(Sara);
+console.log(Sara.getLang())  
+
+
+
+//Interfaces
+interface Musician {
+    name: string,
+    instrument: string,
+
+
+    play(action: string): string,
+}
+
+class Guitariste implements Musician {
+    name: string
+    instrument: string
+
+    constructor(name:string, instrument:string) {
+        this.name = name
+        this.instrument = instrument
+    }
+
+    play(action: string) {
+        return `${this.name} ${action} ${this.instrument}`
+    }
+}
+
+
+const profile = new Guitariste('Dave', 'Guitar')
+console.log(profile.play("play well"))

@@ -130,3 +130,47 @@ const myImg = document.getElementById('#img');
 const nextImg = document.getElementById('#img');
 // img.src
 // myImg.src
+//CLASSES
+class Coder {
+    constructor(name, music, age, lang = "TypeScript") {
+        this.name = name;
+        this.music = music;
+        this.age = age;
+        this.lang = lang;
+        this.name = name;
+        this.music = music;
+        this.age = age;
+        this.lang = lang;
+    }
+    getAge() {
+        return `Hello i am ${this.age}`;
+    }
+}
+const Dave = new Coder('Dave', 'Rock', 42);
+console.log(Dave.getAge());
+// console.log(Dave.age);
+// console.log(Dave.lang);
+class WebDev extends Coder {
+    constructor(computer, name, music, age) {
+        super(name, music, age);
+        this.computer = computer;
+        this.computer = computer;
+    }
+    getLang() {
+        return `I write ${this.lang}`;
+    }
+}
+const Sara = new WebDev('Mac', 'Sara', 'rock', 25);
+console.log(Sara);
+console.log(Sara.getLang());
+class Guitariste {
+    constructor(name, instrument) {
+        this.name = name;
+        this.instrument = instrument;
+    }
+    play(action) {
+        return `${this.name} ${action} ${this.instrument}`;
+    }
+}
+const profile = new Guitariste('Dave', 'Guitar');
+console.log(profile.play("play well"));
