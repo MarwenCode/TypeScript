@@ -299,4 +299,72 @@ class Guitariste implements Musician {
 
 
 const profile = new Guitariste('Dave', 'Guitar')
-console.log(profile.play("play well"))
+console.log(profile.play("play well"));
+
+
+// Static
+class Users {
+    static count: number = 0;
+
+    static getCount(): number {
+        return Users.count;
+
+    }
+
+    public id: number;
+
+    constructor(public name: string) {
+        this.name = name;
+        this.id =  ++Users.count
+    }
+}
+
+const J = new Users('J');
+const A = new Users('A');
+const B = new Users('B');
+
+console.log(Users.count);
+console.log(J.id);
+
+// Getters&& Setters
+class Bands {
+    private dataState: string[];
+
+    constructor() {
+        this.dataState = ['test' ,"trest"];
+    }
+
+    public get data(): string[] {
+        return this.dataState
+    }
+
+    public set data(value: string[]) {
+        if(Array.isArray(value) && value.every(el => typeof el === "string")) {
+            this.dataState = value
+            return
+        } else throw Error("Param is not an array of strings")
+    }
+}
+
+const Mybands = new Bands();
+console.log(Mybands.data)
+
+Mybands.data = [...Mybands.data, "add Bands"];
+console.log(Mybands.data);
+
+//Index Signatures
+
+interface TransactionsObj {
+    Pizza: number,
+    Books: number,
+    Job: number
+}
+
+const todaysTransactions: TransactionsObj = {
+    Pizza: 10,
+    Books: -5,
+    Job: 50
+
+}
+
+

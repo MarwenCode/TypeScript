@@ -174,3 +174,46 @@ class Guitariste {
 }
 const profile = new Guitariste('Dave', 'Guitar');
 console.log(profile.play("play well"));
+// Static
+class Users {
+    static getCount() {
+        return Users.count;
+    }
+    constructor(name) {
+        this.name = name;
+        this.name = name;
+        this.id = ++Users.count;
+    }
+}
+Users.count = 0;
+const J = new Users('J');
+const A = new Users('A');
+const B = new Users('B');
+console.log(Users.count);
+console.log(J.id);
+// Getters&& Setters
+class Bands {
+    constructor() {
+        this.dataState = ['test', "trest"];
+    }
+    get data() {
+        return this.dataState;
+    }
+    set data(value) {
+        if (Array.isArray(value) && value.every(el => typeof el === "string")) {
+            this.dataState = value;
+            return;
+        }
+        else
+            throw Error("Param is not an array of strings");
+    }
+}
+const Mybands = new Bands();
+console.log(Mybands.data);
+Mybands.data = [...Mybands.data, "add Bands"];
+console.log(Mybands.data);
+const todaysTransactions = {
+    Pizza: 10,
+    Books: -5,
+    Job: 50
+};
