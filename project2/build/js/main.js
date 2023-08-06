@@ -254,3 +254,21 @@ const monthlyIncomes = {
 for (const revenue in monthlyIncomes) {
     console.log(monthlyIncomes[revenue]);
 }
+// Generics Types
+// GENERICS : T is a placeholder allow as to specify the different types that we can use it 
+const identity = (arg) => {
+    return arg;
+};
+let output = identity("Hello");
+let output1 = identity(200);
+let output2 = identity({ title: "hello world" });
+console.log(output, output1, output2);
+const ObjName = { name: "username" };
+const ObjAge = { age: 20 };
+const ArrayFunction = (name, age) => {
+    let arr = [];
+    arr.push(name, age);
+    return arr;
+};
+const result = ArrayFunction(ObjName, ObjAge);
+console.log(result);

@@ -446,3 +446,34 @@ const monthlyIncomes: Income = {
 for(const revenue in monthlyIncomes) {
     console.log(monthlyIncomes[revenue as keyof Income])
 }
+
+
+// Generics Types
+// GENERICS : T is a placeholder allow as to specify the different types that we can use it 
+
+
+
+const identity = <T>(arg: T) => {
+    return arg
+ 
+ }
+ 
+ let output = identity<string>("Hello")
+ let output1 = identity<number>(200)
+ let output2 = identity({title: "hello world"})
+ console.log(output, output1, output2)
+ 
+ 
+ const ObjName = {name: "username"};
+ const ObjAge = {age: 20};
+ 
+ const ArrayFunction =<N extends{name:string}, A extends{age:number}>(name: N, age: A) => {
+   let arr: Array<object> = [];
+   arr.push(name, age);
+   return arr
+ 
+ }
+ 
+ const result = ArrayFunction(ObjName, ObjAge);
+ 
+ console.log(result)
