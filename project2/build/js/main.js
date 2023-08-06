@@ -217,3 +217,16 @@ const todaysTransactions = {
     Books: -5,
     Job: 50
 };
+console.log(todaysTransactions.Pizza);
+//console log the index or the key of the propety using the index signatures
+console.log(todaysTransactions["Pizza"]);
+let prop = 'Books';
+console.log(todaysTransactions[prop]);
+const todayIncome = (transactions) => {
+    let total = 0;
+    for (const transaction in transactions) {
+        total += transactions[transaction];
+    }
+    return total;
+};
+console.log(todayIncome(todaysTransactions));

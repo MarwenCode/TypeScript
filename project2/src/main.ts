@@ -355,6 +355,9 @@ console.log(Mybands.data);
 //Index Signatures
 
 interface TransactionsObj {
+    [key: string] : number,
+
+
     Pizza: number,
     Books: number,
     Job: number
@@ -366,5 +369,28 @@ const todaysTransactions: TransactionsObj = {
     Job: 50
 
 }
+
+console.log(todaysTransactions.Pizza);
+
+//console log the index or the key of the propety using the index signatures
+console.log(todaysTransactions["Pizza"]);
+
+
+let prop: string = 'Books';
+console.log(todaysTransactions[prop]);
+
+const todayIncome = (transactions: TransactionsObj): number => {
+    let total = 0;
+    for(const transaction in transactions) {
+
+        total += transactions[transaction]
+
+    }
+    return total
+}
+
+console.log(todayIncome(todaysTransactions));
+
+
 
 
