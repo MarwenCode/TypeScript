@@ -394,3 +394,55 @@ console.log(todayIncome(todaysTransactions));
 
 
 
+interface Student {
+    // [key: string]: string | number | number[] | undefined,
+
+    name: string,
+    GPA: number, 
+    classes: number[],
+}
+
+const student: Student = {
+    name: "Doug",
+    GPA:.897436, //this is a decimal   
+    classes: [100,200]
+}
+
+
+for(const key in student) {
+    console.log(`${key} :${student[key as keyof Student]}   `)
+}
+
+
+Object.keys(student).map(key => {
+    console.log(student [key as keyof typeof student])
+})
+
+
+const logStudentkey = (student: Student, key: keyof Student): void => {
+    console.log(`Student ${key}: ${student[key]} `)
+}
+
+
+logStudentkey(student, "GPA")
+logStudentkey(student, "name")
+logStudentkey(student, "classes")
+
+//Record for index signatudes using type instead of interface
+
+// interface Incomes {
+//     [key: string]: number
+// }
+
+type Streams = 'salary' | 'bonus';
+
+type Income = Record<Streams, number>;
+
+const monthlyIncomes: Income = {
+    salary: 500,
+    bonus: 200
+}
+
+for(const revenue in monthlyIncomes) {
+    console.log(monthlyIncomes[revenue as keyof Income])
+}

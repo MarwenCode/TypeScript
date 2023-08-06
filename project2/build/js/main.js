@@ -230,3 +230,27 @@ const todayIncome = (transactions) => {
     return total;
 };
 console.log(todayIncome(todaysTransactions));
+const student = {
+    name: "Doug",
+    GPA: .897436,
+    classes: [100, 200]
+};
+for (const key in student) {
+    console.log(`${key} :${student[key]}   `);
+}
+Object.keys(student).map(key => {
+    console.log(student[key]);
+});
+const logStudentkey = (student, key) => {
+    console.log(`Student ${key}: ${student[key]} `);
+};
+logStudentkey(student, "GPA");
+logStudentkey(student, "name");
+logStudentkey(student, "classes");
+const monthlyIncomes = {
+    salary: 500,
+    bonus: 200
+};
+for (const revenue in monthlyIncomes) {
+    console.log(monthlyIncomes[revenue]);
+}
