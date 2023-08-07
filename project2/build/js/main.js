@@ -263,6 +263,16 @@ let output = identity("Hello");
 let output1 = identity(200);
 let output2 = identity({ title: "hello world" });
 console.log(output, output1, output2);
+const person1 = {
+    name: "Alex",
+    DateofBirth: 3456789,
+};
+const person2 = {
+    name: "Alex",
+    DateofBirth: "3456789",
+};
+console.log(person1);
+console.log(person2);
 const ObjName = { name: "username" };
 const ObjAge = { age: 20 };
 const ArrayFunction = (name, age) => {

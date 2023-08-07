@@ -462,6 +462,25 @@ const identity = <T>(arg: T) => {
  let output1 = identity<number>(200)
  let output2 = identity({title: "hello world"})
  console.log(output, output1, output2)
+
+ type Person<T> = {
+    name:string;
+    DateofBirth:T
+ }
+
+ const person1: Person<number> = {
+    name:"Alex",
+    DateofBirth:3456789,
+ }
+ const person2: Person<string> = {
+    name:"Alex",
+    DateofBirth:"3456789",
+ }
+
+ console.log(person1)
+ console.log(person2)
+
+
  
  
  const ObjName = {name: "username"};
@@ -476,4 +495,5 @@ const identity = <T>(arg: T) => {
  
  const result = ArrayFunction(ObjName, ObjAge);
  
- console.log(result)
+ console.log(result) 
+
