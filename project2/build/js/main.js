@@ -282,3 +282,21 @@ const ArrayFunction = (name, age) => {
 };
 const result = ArrayFunction(ObjName, ObjAge);
 console.log(result);
+class StateObject {
+    constructor(value) {
+        this.data = value;
+    }
+    get state() {
+        return this.data;
+    }
+    set state(value) {
+        this.data = value;
+    }
+}
+const store = new StateObject("John");
+console.log(store.state);
+store.state = "Dave";
+console.log(store.state);
+const myState = new StateObject([]);
+myState.state = ["username1", 40, true];
+console.log(myState.state);
