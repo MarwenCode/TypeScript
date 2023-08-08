@@ -300,3 +300,22 @@ console.log(store.state);
 const myState = new StateObject([]);
 myState.state = ["username1", 40, true];
 console.log(myState.state);
+const updateAssignment = (assign, propsToUpdate) => {
+    return Object.assign(Object.assign({}, assign), propsToUpdate);
+};
+const assign1 = {
+    studentId: "id123",
+    title: "final project",
+    grade: 3,
+};
+console.log(updateAssignment(assign1, { grade: 5 }));
+const assignGraded = updateAssignment(assign1, { grade: 95 });
+console.log(assignGraded);
+// Required and Readonly 
+const recordAssignment = (assign) => {
+    // send to database, etc. 
+    return assign;
+};
+const assignVerified = Object.assign(Object.assign({}, assignGraded), { verified: true });
+// assignVerified.grade = 22
+recordAssignment(Object.assign(Object.assign({}, assignGraded), { verified: true }));

@@ -530,3 +530,47 @@ const identity = <T>(arg: T) => {
  const myState = new StateObject<(string | number | boolean)[]> ([]);
  myState.state = ["username1", 40, true]
  console.log(myState.state)
+
+
+ // Utility types
+
+
+
+ // PARTIAL
+
+ interface Assignment {
+    studentId: string,
+    title: string,
+    grade: number;
+    verified?: boolean,
+
+ }
+
+ const updateAssignment = (assign: Assignment, propsToUpdate: Partial<Assignment>) : Assignment => {
+    return {...assign, ...propsToUpdate}
+ }
+
+ const assign1: Assignment = {
+    studentId:"id123",
+    title:"final project",
+    grade:3,
+ }
+
+ console.log(updateAssignment(assign1, {grade: 5}));
+
+ const assignGraded: Assignment = updateAssignment(assign1, { grade: 95 })
+
+ console.log(assignGraded)
+
+ // Required and Readonly 
+
+const recordAssignment = (assign: Required<Assignment>): Assignment => {
+    // send to database, etc. 
+    return assign
+}
+
+const assignVerified: Readonly<Assignment> = { ...assignGraded, verified: true }
+
+// assignVerified.grade = 22
+
+recordAssignment({ ...assignGraded, verified: true })
