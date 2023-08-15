@@ -2,11 +2,12 @@ import { ReactNode, useReducer, ChangeEvent } from "react";
 
 const initialState = {
   count: 0,
+  text: "",
 };
 
-type Action = {
-    type: "INCREMENT" | "DECREMENT"; // Use string literal types
-  };
+type Action =  { type: "INCREMENT" | "DECREMENT" } | { type: "PAYLOAD"; payload: string }; 
+
+ 
 
 const reducer = (state: typeof initialState, action: Action): typeof initialState => {
   switch (action.type) {
@@ -14,6 +15,8 @@ const reducer = (state: typeof initialState, action: Action): typeof initialStat
       return { ...state, count: state.count + 1 };
     case "DECREMENT":
       return { ...state, count: state.count - 1 };
+    case "PAYLOAD":
+      return { ...state, text: action.payload };
 
     default:
       throw new Error();
@@ -32,6 +35,15 @@ const ReducerCount = () => {
       type: "DECREMENT",
     });
 
+  const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+        type: "PAYLOAD",
+      payload: e.target.value, // Set the payload value
+    
+      
+    })
+  }
+
   return (
     <>
       <h1> Reducer count : {state.count}</h1>
@@ -39,6 +51,8 @@ const ReducerCount = () => {
                 <button onClick={increment}>+</button>
                 <button onClick={decrement}>-</button>
             </div>
+            <input type="text" onChange={handleText} value={state.text} />
+      <p>Text: {state.text}</p>
     </>
   );
 };
