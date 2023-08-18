@@ -21,6 +21,24 @@ interface ProductProviderProps {
 export const ProductsProvider= ({children}: ProductProviderProps ) => {
     const [products, setProducts] = useState(initState);
 
+    useEffect(() => {
+        const fetchProducts = async(): Promise<ProductType[]>  => {
+            const data = await fetch('http://localhost:3500/products')
+            .then((response) =>{
+                return response.json()
+            })
+            .catch(error => {
+                console.log(error)
+            });
+            return data
+            
+        }
+        fetchProducts().then(products => setProducts(products));
+     
+    }, []);
+
+    
+
 
     return (
         <ProductsContext.Provider value={{products}}>
