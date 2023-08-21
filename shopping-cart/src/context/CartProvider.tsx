@@ -1,4 +1,7 @@
-import { useMemo, useReducer, createContext, ReactElement } from "react";
+
+import React, { useMemo, useReducer, createContext, ReactElement, ReactNode, Reducer } from "react";
+
+//reducer
 
 type CartItemType = {
   sku: string;
@@ -12,19 +15,26 @@ type CartStateType = {
     
     };
 
+const initCartState: CartStateType = { 
+    cart: [] 
+
+
+}
+
 type Action =
   | {
-      payload: { sku: any; name: any; price: any };
+      payload: { sku: any; name: any; price: any, qty: any  };
       type: "ADD" | "REMOVE" | "QUANTITY" | "SUBMIT";
     }
   | { type: "PAYLOAD"; payload: string };
 
 const reducer = ( state: CartStateType, action: Action): CartStateType | undefined => {
+    const currentCart = state.cart;
   switch (action.type) {
     case "ADD": {
       const { sku, name, price } = action.payload;
      // Access the current cart array from the state
-     const currentCart = state.cart;
+     
 
      // Filter out items with the same SKU as the one being added
      const filteredCart: CartItemType[] = currentCart.filter(item => item.sku !== sku);
@@ -37,5 +47,77 @@ const reducer = ( state: CartStateType, action: Action): CartStateType | undefin
 
       return { ...state, cart: [...filteredCart, { sku, name, price, qty }] };
     }
+
+    case "REMOVE": {
+
+        const { sku } = action.payload;
+        const filteredCart: CartItemType[] = currentCart.filter(item => item.sku !== sku);
+        
+        return {...state, cart: [...filteredCart]}
+
+
+    }
+    case "QUANTITY": {
+        if (!action.payload) {
+            throw new Error('action.payload missing in QUANTITY action')
+        }
+
+        const { sku, qty } = action.payload
+
+        const itemExists: CartItemType | undefined = state.cart.find(item => item.sku === sku)
+
+        if (!itemExists) {
+            throw new Error('Item must exist in order to update quantity')
+        }
+
+        const updatedItem: CartItemType = { ...itemExists, qty }
+
+        const filteredCart: CartItemType[] = state.cart.filter(item => item.sku !== sku)
+
+        return { ...state, cart: [...filteredCart, updatedItem] }
+    }
   }
 };
+
+
+//context
+interface CartProviderProps {
+    children: ReactNode;
+}
+
+export const CartContext = React.createContext();
+
+export const CartProvider = ({children}: CartProviderProps) => {
+
+    const [state, dispatch] = useReducer(reducer, initCartState);
+
+
+    const totalItems = state.cart.reduce((previousValue, cartItem) => {
+        return previousValue + cartItem.qty
+    }, 0)
+
+    const totalPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+        state.cart.reduce((previousValue, cartItem) => {
+            return previousValue + (cartItem.qty * cartItem.price)
+        }, 0)
+    )
+
+
+
+
+    return (
+        <CartContext.Provider
+          value={{
+            dispatch, totalItems, totalPrice,  
+            
+          }}>
+          {children}
+        </CartContext.Provider>
+      );
+
+}
+
+
+
+
+
