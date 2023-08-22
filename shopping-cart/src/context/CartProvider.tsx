@@ -1,5 +1,5 @@
 
-import React, { useMemo, useReducer, createContext, ReactElement, ReactNode, Reducer } from "react";
+import React, { useMemo, useReducer, createContext, ReactElement, ReactNode, Reducer, Dispatch } from "react";
 
 //reducer
 
@@ -11,12 +11,16 @@ type CartItemType = {
 };
 
 type CartStateType = {
-     cart: CartItemType[]
+     cart: CartItemType[],
+    //  totalItems: number,
+    //  totalPrice: string,
     
     };
 
 const initCartState: CartStateType = { 
-    cart: [] 
+    cart: [],
+    // totalItems: 0,
+    // totalPrice: '',
 
 
 }
@@ -28,7 +32,7 @@ type Action =
     }
   | { type: "PAYLOAD"; payload: string };
 
-const reducer = ( state: CartStateType, action: Action): CartStateType | undefined => {
+  const reducer: Reducer<CartStateType, Action> = (state, action) => {
     const currentCart = state.cart;
   switch (action.type) {
     case "ADD": {
@@ -76,6 +80,9 @@ const reducer = ( state: CartStateType, action: Action): CartStateType | undefin
 
         return { ...state, cart: [...filteredCart, updatedItem] }
     }
+
+    default:
+      throw new Error('Unidentified reducer action type')
   }
 };
 
@@ -85,7 +92,16 @@ interface CartProviderProps {
     children: ReactNode;
 }
 
-export const CartContext = React.createContext();
+// export const CartContext = React.createContext();
+
+export const CartContext = React.createContext<{
+  cart: CartItemType[];
+  totalItems: number;
+  totalPrice: string;
+  dispatch: Dispatch<Action>;
+} | undefined>(undefined);
+
+
 
 export const CartProvider = ({children}: CartProviderProps) => {
 
@@ -108,7 +124,10 @@ export const CartProvider = ({children}: CartProviderProps) => {
     return (
         <CartContext.Provider
           value={{
-            dispatch, totalItems, totalPrice,  
+            cart: state.cart,
+            totalItems: totalItems,
+            totalPrice: totalPrice,
+            dispatch: dispatch,
             
           }}>
           {children}
