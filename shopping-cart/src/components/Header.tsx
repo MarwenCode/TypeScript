@@ -1,15 +1,16 @@
-import Reac , {useContext} from 'react';
+import React , {useContext} from 'react';
 import { CartContext } from '../context/CartProvider';
+import Nav from './Nav';
 
 
 type PropsType = {
-    veiwCart: boolean,
-    setVeiwCart: React.Dispatch<React.SetStateAction<boolean>>,
+    viewCart: boolean,
+    setViewCart: React.Dispatch<React.SetStateAction<boolean>>
    
 }
 
 const Header = ({ viewCart, setViewCart }: PropsType) => {
-    const {totalItems, totalPrice } = useContext(CartContext)
+    // const {totalItems, totalPrice } = useContext(CartContext)
 
 
 
@@ -19,11 +20,12 @@ const Header = ({ viewCart, setViewCart }: PropsType) => {
     <div className="header__title-bar">
         <h1>Acme Co.</h1>
         <div className="header__price-box">
-            <p>Total Items: {totalItems}</p>
-            <p>Total Price: {totalPrice}</p>
+            <p>Total Items: </p>
+            <p>Total Price: </p>
         </div>
     </div>
-    <Nav viewCart={viewCart} setViewCart={setViewCart} />
+       
+       <Nav viewCart={viewCart} setViewCart={setViewCart} />
 </header>
   )
 }

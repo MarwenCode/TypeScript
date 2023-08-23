@@ -1,8 +1,27 @@
 import React from 'react'
 
-const Footer = () => {
+type PropsType = {
+  viewCart: boolean,
+}
+
+const Footer = ({ viewCart }: PropsType) => {
+
+
+  const year: number = new Date().getFullYear()
+  
   return (
-    <div>Footer</div>
+    <div className='footer'>
+
+      {viewCart
+        ? <p>Shopping Cart &copy; {year}</p>
+        : (
+            <>
+                <p>Total Items: </p>
+                <p>Total Price: </p>
+                <p>Shopping Cart &copy; {year}</p>
+            </>
+        ) }
+    </div>
   )
 }
 
