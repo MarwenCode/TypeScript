@@ -10,7 +10,7 @@ type PropsType = {
 }
 
 const Header = ({ viewCart, setViewCart }: PropsType) => {
-    // const {totalItems, totalPrice } = useContext(CartContext)
+    const {totalItems, totalPrice } = useContext(CartContext)
 
 
 
@@ -20,8 +20,8 @@ const Header = ({ viewCart, setViewCart }: PropsType) => {
     <div className="header__title-bar">
         <h1>Acme Co.</h1>
         <div className="header__price-box">
-            <p>Total Items: </p>
-            <p>Total Price: </p>
+            <p>Total Items:{totalItems} </p>
+            <p>Total Price: {totalPrice} </p>
         </div>
     </div>
        
