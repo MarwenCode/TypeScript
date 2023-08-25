@@ -38,21 +38,26 @@ interface ProductProviderProps {
 export const ProductsProvider= ({children}: ProductProviderProps ) => {
     const [products, setProducts] = useState(initState);
 
+
     useEffect(() => {
-        const fetchProducts = async(): Promise<ProductType[]>  => {
-            const data = await fetch('http://localhost:3500/products')
-            .then((response) =>{
-                return response.json()
-            })
-            .catch(error => {
-                console.log(error)
-            });
-            return data
-            
-        }
-        fetchProducts().then(products => setProducts(products));
-     
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch('http://localhost:3500/products');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                console.log('Fetched data:', data); // Log the fetched data
+                setProducts(data); // Assuming the fetched data structure has a "products" property
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+    
+        fetchProducts();
     }, []);
+    
+    
 
     
 

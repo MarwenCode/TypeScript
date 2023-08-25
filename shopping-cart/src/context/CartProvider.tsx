@@ -3,7 +3,7 @@ import React, { useMemo, useReducer, createContext, ReactElement, ReactNode, Red
 
 //reducer
 
-type CartItemType = {
+export type CartItemType = {
   sku: string;
   name: string;
   price: number;
@@ -25,7 +25,7 @@ const initCartState: CartStateType = {
 
 }
 
-type Action =
+export type Action =
   | {
       payload: { sku: any; name: any; price: any, qty: any  };
       type: "ADD" | "REMOVE" | "QUANTITY" | "SUBMIT";
