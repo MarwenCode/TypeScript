@@ -7,12 +7,14 @@ import Product from './Product';
 const ProductList = () => {
 
   const { products } = useContext(ProductsContext);
-  const { dispatch } = useContext(CartContext) as {
+  const { cart, dispatch, totalItems, totalPrice } = useContext(CartContext) as {
     cart: CartItemType[];
     totalItems: number;
     totalPrice: string;
     dispatch: Dispatch<Action>;
   };
+
+  
   
   
 
@@ -22,8 +24,7 @@ const ProductList = () => {
         <Product
           key={product.sku}
           product={product}
-          dispatch={dispatch}
-        />
+          dispatch={dispatch} cart={cart}        />
       ))}
       {/* {!products && <p>Loading...</p>} */}
     </main>

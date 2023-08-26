@@ -4,6 +4,7 @@ import React, { useMemo, useReducer, createContext, ReactElement, ReactNode, Red
 //reducer
 
 export type CartItemType = {
+  some: any;
   sku: string;
   name: string;
   price: number;
