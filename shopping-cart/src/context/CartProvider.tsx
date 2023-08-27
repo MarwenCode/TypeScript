@@ -81,6 +81,9 @@ export type Action =
 
         return { ...state, cart: [...filteredCart, updatedItem] }
     }
+    case "SUBMIT": {
+      return { ...state, cart: [] }
+  }
 
     default:
       throw new Error('Unidentified reducer action type')
