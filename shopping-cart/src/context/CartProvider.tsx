@@ -28,10 +28,10 @@ const initCartState: CartStateType = {
 
 export type Action =
   | {
-      payload: { sku: any; name: any; price: any, qty: any  };
-      type: "ADD" | "REMOVE" | "QUANTITY" | "SUBMIT";
+      payload: { sku: string; name: string; price: number, qty: number  };
+      type: "ADD" | "REMOVE" | "QUANTITY" | "SUBMIT" | "Increase"
     }
-  | { type: "PAYLOAD"; payload: string };
+  // | { type: "PAYLOAD"; payload: string };
 
   const reducer: Reducer<CartStateType, Action> = (state, action) => {
     const currentCart = state.cart;
@@ -81,6 +81,20 @@ export type Action =
 
         return { ...state, cart: [...filteredCart, updatedItem] }
     }
+    case "Increase": {
+      const skuToIncrease = action.payload; // action.payload should be the SKU string
+    
+      const increasedCart = currentCart.map((cartItem) => {
+        if (cartItem.sku === skuToIncrease) {
+          return { ...cartItem, qty: cartItem.qty + 1 };
+        }
+        return cartItem;
+      });
+    
+      return { ...state, cart: increasedCart };
+    }
+    
+    
     case "SUBMIT": {
       return { ...state, cart: [] }
   }

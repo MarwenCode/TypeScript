@@ -17,6 +17,12 @@ const Cart = () => {
   const onSubmitOrder = () => {
     dispatch({
       type: "SUBMIT",
+      payload: {
+        sku: undefined,
+        name: undefined,
+        price: undefined,
+        qty: undefined
+      }
     });
     setConfirm(true);
   };
