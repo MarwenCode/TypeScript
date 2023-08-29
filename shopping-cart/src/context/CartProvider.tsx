@@ -29,7 +29,7 @@ const initCartState: CartStateType = {
 export type Action =
   | {
       payload: { sku: string; name: string; price: number, qty: number  };
-      type: "ADD" | "REMOVE" | "QUANTITY" | "SUBMIT" | "Increase"
+      type: "ADD" | "REMOVE" | "QUANTITY" | "SUBMIT" | "Increase" | "Decrease"
     }
   // | { type: "PAYLOAD"; payload: string };
 
@@ -93,6 +93,21 @@ export type Action =
     
       return { ...state, cart: increasedCart };
     }
+    case "Decrease": {
+      const skuToDecrease = action.payload;
+      
+      const updatedCart = currentCart.map((cartItem) => {
+        if (cartItem.sku === skuToDecrease) {
+          if (cartItem.qty > 0) {
+            return { ...cartItem, qty: cartItem.qty - 1 };
+          }
+        }
+        return cartItem;
+      });
+    
+      return { ...state, cart: updatedCart };
+    }
+    
     
     
     case "SUBMIT": {
