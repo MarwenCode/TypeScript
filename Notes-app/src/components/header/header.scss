@@ -1,3 +1,33 @@
-.header {
-    background-color: rgb(204, 119, 119);
-}
+.navbar {
+    background-color: #3498db;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    &-brand {
+      h1 {
+        margin: 0;
+      }
+    }
+  
+    &-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+  
+      li a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+  
+        &:hover {
+          color: #f39c12;
+        }
+      }
+    }
+  }
+  
