@@ -1,29 +1,24 @@
 import { useState } from 'react'
 import Header from './components/header/Header';
 import { Note } from './noteModel/noteModel';
-import { v4 as uuidv4 } from 'uuid';
+
+import CreateNotes from './components/createNote/CreateNotes';
 // import './App.css'
 
 function App() {
-  const [notes, setNotes] = useState<Note[]>([{
-    id: uuidv4(),
-    title: "Meeting",
-    text:"this is a text",
-    color: "#dfdfdf",
-    date: (new Date).toString()
-  }])
+  const [notes, setNotes] = useState<Note[]>([])
   
 
   return (
     <>
     <Header />
+    <CreateNotes notes={notes} setNotes={setNotes} />
     
     </>
   )
 }
 
 export default App
-function uuuid() {
-  throw new Error('Function not implemented.');
-}
+
+
 
