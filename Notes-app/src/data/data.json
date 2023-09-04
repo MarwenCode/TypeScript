@@ -1,0 +1,21 @@
+{
+    "notes": [
+      {
+        "id": "1",
+        "title": "Note 1",
+        "text": "This is the first note.",
+        "color": "blue",
+        "date": "2023-08-15",
+        "status": "open"
+      },
+      {
+        "id": "2",
+        "title": "Note 2",
+        "text": "This is the second note.",
+        "color": "green",
+        "date": "2023-08-16",
+        "status": "closed"
+      }
+    ]
+  }
+  

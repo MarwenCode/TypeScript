@@ -15,9 +15,9 @@ const CreateNotes = ({ notes, setNotes }: CreateNotesProps): ReactElement => {
   const [status, setStatus] = useState<string>("");
   // const [date, setDate]= useState<string>("")
 
-  const addNote = (
+  const addNote = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void => {
+  ): Promise<void> => {
     e.preventDefault();
 
     const id: string = uuidv4();
@@ -28,11 +28,28 @@ const CreateNotes = ({ notes, setNotes }: CreateNotesProps): ReactElement => {
       color,
       text,
       status,
-      date: new Date().toDateString()
+      date: new Date().toDateString(),
     };
 
     // Update the 'notes' state with the new note.
     setNotes((prevNotes) => [...prevNotes, newNote]);
+
+    try {
+      // Make a POST request to save the new note to the database using fetch.
+      await fetch("http://localhost:3001/notes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newNote),
+      });
+
+      // Optionally, you can fetch the updated notes from the database
+      // and set them in your 'notes' state here.
+    } catch (error) {
+      console.error("Error saving the note to the database:", error);
+    }
+
     console.log(newNote);
 
     // Clear the form fields for the next entry.
