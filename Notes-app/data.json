@@ -1,19 +1,36 @@
 {
-  "posts": [
+  "notes": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "id": "1",
+      "title": "Note 1",
+      "text": "This is the first note.",
+      "color": "blue",
+      "date": "2023-08-15",
+      "status": "open"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "2",
+      "title": "Note 2",
+      "text": "This is the second note.",
+      "color": "green",
+      "date": "2023-08-16",
+      "status": "closed"
+    },
+    {
+      "id": "021acd19-df11-4ae8-a637-8dac96272cb6",
+      "title": "xs",
+      "color": "xs",
+      "text": "xsx",
+      "status": "",
+      "date": "Tue Sep 05 2023"
+    },
+    {
+      "id": "4d38cc71-072a-435e-879b-99526ddcac95",
+      "title": "sxs",
+      "color": "xs",
+      "text": "xs",
+      "status": "",
+      "date": "Tue Sep 05 2023"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

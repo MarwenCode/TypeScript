@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { ReactElement } from "react";
+import { Note } from '../../noteModel/noteModel';
+import NoteCard from "../notecart/NoteCart";
 
-const NotesList = () => {
-  return (
-    <div>NotesList</div>
-  )
+interface noteListProps {
+  notes: Note[];
 }
 
-export default NotesList
+const NotesList = ({ notes }: noteListProps): ReactElement => {
+  return (
+    <>
+      {notes.map((note) => (
+        // <p key={note.id}>{note.title}</p>
+        <NoteCard note={note}/>
+      
+      ))}
+    </>
+  );
+}
+
+export default NotesList;

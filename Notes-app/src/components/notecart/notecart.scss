@@ -1,0 +1,54 @@
+.card {
+    border: 1px solid #444040;
+    padding: 16px;
+    margin: 8px;
+    background-color: rgb(56, 51, 51);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color:white;
+    width: 50%;
+    justify-content: center;
+    transform: translate(50%,10%);
+  
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      h1 {
+        font-size: 18px;
+      }
+  
+      p {
+        font-size: 14px;
+        color: #777;
+      }
+    }
+  
+    .content {
+      margin-top: 8px;
+      font-size: 16px;
+    }
+  
+    .status {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #333;
+    }
+  
+    /* Define your color classes here */
+    .red {
+      background-color: #ffcccc;
+    }
+  
+    .blue {
+      background-color: #cce6ff;
+    }
+  
+    .green {
+      background-color: #ccffcc;
+    }
+  
+    /* Add more color classes as needed */
+  }
+  
