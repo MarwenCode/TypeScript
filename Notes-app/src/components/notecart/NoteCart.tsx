@@ -4,9 +4,19 @@ import "./notecart.scss"; // Import your CSS/SCSS file
 
 interface NoteProps {
   note: Note;
+  deleteNote: (id:string) => void
 }
 
-const NoteCard = ({ note }: NoteProps): ReactElement => {
+const NoteCard = ({ note, deleteNote }: NoteProps): ReactElement => {
+
+    const handleDeleteNote = () => {
+        deleteNote(note.id)
+    }
+
+
+
+
+
   return (
     <div className={`card ${note.color}`}>
       <div className="top">
@@ -19,6 +29,7 @@ const NoteCard = ({ note }: NoteProps): ReactElement => {
       <div className="status">
         <p>Status: {note.status}</p>
       </div>
+      <button onClick={() => handleDeleteNote()}>Delete</button>
     </div>
   );
 };

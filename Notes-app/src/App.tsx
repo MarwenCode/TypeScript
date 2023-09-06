@@ -22,12 +22,14 @@ function App() {
 
   console.log(notes);
 
+
+
   return (
     <Router>
       <Header />
 
       <Routes>
-        <Route path="/" element={<NotesList notes={notes} />} />
+        <Route path="/" element={<NotesList notes={notes}  setNotes={setNotes}/>} />
         <Route
           path="/createNote"
           element={<CreateNotes notes={notes} setNotes={setNotes} />}
