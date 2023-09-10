@@ -1,33 +1,95 @@
+// Default styles (light mode)
 .navbar {
-    background-color: #3498db;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-    &-brand {
-      h1 {
-        margin: 0;
-      }
-    }
-  
-    &-links {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
+  color: #fff;
+  background-color: #333; /* Background color for light mode */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &-brand {
+    h1 {
       margin: 0;
-  
-      li a {
+    }
+  }
+
+  &-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline;
+      margin: 0;
+
+      a {
         color: #fff;
         text-decoration: none;
         transition: color 0.3s;
-  
+
         &:hover {
-          color: #f39c12;
+          color: rgba(247, 235, 245, 0.1);
         }
       }
     }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 24px;
+
+      /* Define the background color for the switch slider */
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+
+        /* Define the shape of the slider */
+        border-radius: 34px;
+      }
+
+      /* Define the appearance of the circle handle */
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+
+      /* Define the appearance of the circle handle in dark mode */
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      /* Define the appearance of the circle handle in light mode */
+      input:checked + .slider:before {
+        transform: translateX(7px);
+      }
+
+      /* Define the position of the circle handle */
+      input:checked + .slider:before {
+        left: 30px;
+      }
+    }
   }
-  
+}
+
+// Dark mode styles (add these styles for dark mode)
+.dark-mode {
+  background-color: #000; /* Background color for dark mode */
+  // You can add more styles for dark mode here
+}
