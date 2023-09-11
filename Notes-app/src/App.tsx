@@ -1,14 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Header from "./components/header/Header";
 import { Note } from "./noteModel/noteModel";
 
 import CreateNotes from "./components/createNote/CreateNotes";
 import NotesList from "./components/noteslist/NotesList";
-// import './App.css'
+import { ContextApp } from "./context";
+import './App.css'
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
+  const { darkMode } = useContext(ContextApp)
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -25,6 +27,7 @@ function App() {
 
 
   return (
+    <div className={darkMode ? 'dark-mode' : ''}>
     <Router>
       <Header />
 
@@ -36,6 +39,7 @@ function App() {
         />
       </Routes>
       </Router>
+      </div>
   );
 }
 

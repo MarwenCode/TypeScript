@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ContextApp } from '../../context';
 import { Link } from 'react-router-dom';
+
 import './header.scss';
 
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+  const { darkMode, toggleDarkMode } = useContext(ContextApp)
+ 
+ 
 
   return (
-    <nav className={`navbar ${darkMode ? 'dark-mode' : ''}`}>
+    <nav className="navbar">
       <div className="navbar-brand">
         <h1>Note App</h1>
       </div>
@@ -23,8 +23,8 @@ const Header = () => {
         </li>
         <li className="item">
           <label className="switch">
-            <input type="checkbox" onChange={toggleDarkMode} />
-            <span className="slider"></span>
+          <input type="checkbox" onChange={toggleDarkMode} checked={darkMode} />
+          <span className="slider"></span>
           </label>
         </li>
       </ul>
