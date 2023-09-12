@@ -1,32 +1,47 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+
+import Question from "./Question";
+import "./quiz.scss";
 
 const Quiz = () => {
-    const [Questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      const response = await fetch(
+        "https://opentdb.com/api.php?amount=10&difficulty=easy&type=boolean"
+      );
+      const data = await response.json();
+      setQuestions(data.results);
+    };
+
+    fetchQuestions();
+  }, []);
+
+  console.log(questions);
 
 
-    useEffect(() => {
-        const fetchQuestions =async () => {
-            const response = await fetch("https://opentdb.com/api.php?amount=10&difficulty=easy&type=boolean");
-            const data = await response.json();
-            setQuestions(data)
-            
-        }
-    
-    fetchQuestions()
-     
-    }, [])
+  const handleNextQuestion = () => {
+    if (currentQuestionIndex < questions.length - 1) {
+        setCurrentQuestionIndex((prevState)=> prevState + 1)
+    }else{
+        alert("Quiz Completed")}
 
-    console.log(Questions)
-    
-
- 
-
-
-
+    }
+  
 
   return (
-    <div>Quiz</div>
-  )
-}
+    <div className="quiz-card">
+    {questions.length > 0 && (
+      <Question
+        question={questions[currentQuestionIndex]}
+        onNextQuestion={handleNextQuestion}
+      />
+    )}
+  </div>
+ 
+  );
+};
 
-export default Quiz
+export default Quiz;
