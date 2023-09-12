@@ -7,6 +7,7 @@ import CreateNotes from "./components/createNote/CreateNotes";
 import NotesList from "./components/noteslist/NotesList";
 import { ContextApp } from "./context";
 import './App.css'
+import Quiz from "./quiz/Quiz";
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
@@ -36,6 +37,10 @@ function App() {
         <Route
           path="/createNote"
           element={<CreateNotes notes={notes} setNotes={setNotes} />}
+        />
+        <Route
+          path="/quiz"
+          element={<Quiz />}
         />
       </Routes>
       </Router>

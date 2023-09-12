@@ -16,6 +16,9 @@ const Header = () => {
       </div>
       <ul className="navbar-links">
         <li className="item">
+          <Link to="/quiz">Quiz</Link>
+        </li>
+        <li className="item">
           <Link to="/">Home</Link>
         </li>
         <li className="item">
