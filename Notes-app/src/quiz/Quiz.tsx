@@ -23,12 +23,16 @@ const Quiz = () => {
 
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < questions.length - 1) {
+    if (currentQuestionIndex < questions.length -1) {
         setCurrentQuestionIndex((prevState)=> prevState + 1)
     }else{
         alert("Quiz Completed")}
 
     }
+
+  // const handleNextQuestion = () => {
+  //   setCurrentQuestionIndex((prevState) => prevState + 1);
+  // };
   
 
   return (

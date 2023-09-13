@@ -1,29 +1,4 @@
-// import React from 'react'
-
-// const Question = () => {
-//   return (
-//     //    <div className="quiz-container">
-//     //   {questions.map((question, index) => (
-//     //     <div className="quiz-card" key={index}>
-//     //       <div className="quiz-header">
-//     //         <h1>{question.category}</h1>
-//     //         <p>Date: {question.created_at}</p>
-//     //       </div>
-//     //       <div className="quiz-content">
-//     //         <p>{question.question}</p>
-//     //       </div>
-//     //       <div className="quiz-footer">
-//     //         <p>Status:</p>
-//     //       </div>
-//     //     </div>
-//     //   ))}
-//     // </div>
-//   )
-// }
-
-// export default Question
-
-import React, { useState, ReactElement } from 'react';
+import React, { useState, ReactElement } from "react";
 
 interface QuestionProps {
   question: {
@@ -33,49 +8,65 @@ interface QuestionProps {
   onNextQuestion: () => void;
 }
 
-const Question = ({ question, onNextQuestion }: QuestionProps): ReactElement => {
+const Question = ({
+  question,
+  onNextQuestion,
+}: QuestionProps): ReactElement => {
   const [userAnswer, setUserAnswer] = useState<string | null>(null); // Specify the type of userAnswer
+  const [answerMessage, setAnswerMessage] = useState<string | null>(null);
+  const [score, setScore] = useState<number>(0);
 
-//   const handleAnswer = (answer: string) => {
-//     setUserAnswer(answer);
-//   };
+  const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserAnswer(event.target.value);
+  };
 
-//   const handleSubmit = () => {
-//     // Check if the user's answer is correct and handle accordingly
-//     const isCorrect = userAnswer === question.correct_answer;
-//     // You can implement your logic here, e.g., display a message or update the score.
+  const handleSubmit = () => {
+    // Check if the user's answer is correct and handle accordingly
+    const isCorrect = userAnswer === question.correct_answer;
 
-//     // Move to the next question
-//     onNextQuestion();
-//   };
+    if (isCorrect) {
+      setAnswerMessage("Your answer is correct");
+      setScore((prevState) => prevState + 1);
+    } else {
+      setAnswerMessage("Your answer is incorrect");
+    }
+    // You can implement your logic here, e.g., display a message or update the score.
+
+    setUserAnswer(null);
+
+    // Move to the next question
+    onNextQuestion();
+  };
 
   return (
     <div className="question">
+      <div className="score"> {score}</div>
+
       <h2>{question.question}</h2>
       <div className="options">
-        <button
-        //   onClick={() => handleAnswer('True')}
-        //   className={userAnswer === 'True' ? 'selected' : ''}
-        >
-          True
-        </button>
-        <button
-        //   onClick={() => handleAnswer('False')}
-        //   className={userAnswer === 'False' ? 'selected' : ''}
-        >
-          False
-        </button>
+        <input
+          type="radio"
+          name="answer"
+          value="True"
+          checked={userAnswer === "True"}
+          onChange={handleAnswerChange}
+        />
+        True
+        <input
+          type="radio"
+          name="answer"
+          value="False"
+          checked={userAnswer === "False"}
+          onChange={handleAnswerChange}
+        />
+        False
       </div>
-      <button 
-    //   onClick={handleSubmit} disabled={!userAnswer}
-      
-      
-      >
+      <button onClick={handleSubmit} disabled={!userAnswer}>
         Submit
       </button>
+      {answerMessage && <p>{answerMessage}</p>}
     </div>
   );
 };
 
 export default Question;
-
