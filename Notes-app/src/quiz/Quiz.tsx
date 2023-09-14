@@ -27,12 +27,19 @@ const Quiz = () => {
         setCurrentQuestionIndex((prevState)=> prevState + 1)
     }else{
         alert("Quiz Completed")}
+       
+     
 
     }
 
   // const handleNextQuestion = () => {
   //   setCurrentQuestionIndex((prevState) => prevState + 1);
   // };
+
+  // Function to reset the current question and user answer
+  const resetQuestion = () => {
+    setCurrentQuestionIndex(0);
+  };
   
 
   return (
@@ -41,6 +48,10 @@ const Quiz = () => {
       <Question
         question={questions[currentQuestionIndex]}
         onNextQuestion={handleNextQuestion}
+        currentQuestionNumber={currentQuestionIndex + 1}
+        totalQuestions={questions.length}
+        resetQuestion={resetQuestion} // Pass the resetQuestion function
+       
       />
     )}
   </div>
