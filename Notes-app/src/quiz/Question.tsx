@@ -22,6 +22,8 @@ const Question = ({
   // const [answerMessage, setAnswerMessage] = useState<string | null>(null);
   const [score, setScore] = useState<number>(0);
   const [finaleMessage, setFinaleMessage] = useState<string | null>(null);
+  const [timer, setTimer] = useState<number>(60);
+  
 
   const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserAnswer(event.target.value);
@@ -48,8 +50,6 @@ const Question = ({
     resetQuestion(); // Call the resetQuestion function
   };
 
-
-
   useEffect(() => {
     const averageScore = () => {
       const percentage = (score / totalQuestions) * 100;
@@ -63,21 +63,46 @@ const Question = ({
       }
     };
 
-  
     if (currentQuestionNumber === totalQuestions) {
       averageScore();
     }
   }, [score, currentQuestionNumber, totalQuestions]);
 
+  //start the Quiz button
+  const startQuiz = () => {
+    if (currentQuestionNumber === totalQuestions) {
+      setTimer(0); // Set timer to 0 when the quiz is complete
+    } else {
+      const intervalId = setInterval(() => {
+        setTimer((prevTimer) => {
+          if (prevTimer > 0) {
+            return prevTimer - 1;
+          } else {
+            clearInterval(intervalId); // Clear the interval when the timer reaches 0
+            return 0; // Set timer to 0
+          }
+        });
+      }, 1000);
+    }
+  };
+
+  const stopQuiz = () => {
+    setTimer((prevTimer) => prevTimer);
+  };
+
   return (
     <div className="question">
-      <div className="score">Score: {score}</div>
+      <div className="left">
+        <span>Score: {score}</span>
+        <h2>
+          Question {currentQuestionNumber} of {totalQuestions}
+        </h2>
+        <button className="start" onClick={startQuiz}>
+          Start: {timer}s
+        </button>
 
-      <h2>
-        Question {currentQuestionNumber} of {totalQuestions}
-      </h2>
-
-     
+        <br />
+      </div>
 
       <h2>{question.question}</h2>
 
@@ -109,7 +134,6 @@ const Question = ({
 
       {currentQuestionNumber === totalQuestions && (
         <>
-          
           <button onClick={playAgain}>play again</button>
         </>
       )}
